@@ -20,11 +20,24 @@ export const toggleMenu = () => {
     }
 }
 
+export const toggleDirectoryMenu = () => {
+    return {
+        type: "TOGGLE_DIRECTORY"
+    }
+}
+
 export const addCard = (cardID, data) => {
     return {
         type: "ADD_CARD",
         cardID,
         data
+    }
+}
+
+export const switchView = (newView) => {
+    return {
+        type: "VIEW_SWITCH",
+        newView
     }
 }
 
@@ -81,6 +94,18 @@ function collapseMenuHelper(state) {
     return temp;
 }
 
+function directoryMenuHelper(state) {
+    let temp = Object.assign(state)
+    temp.directoryMenu = !temp.directoryMenu;
+    return temp;
+}
+
+function switchViewHelper(state, view) {
+    let temp = Object.assign(state)
+    temp.currentView = view;
+    return temp;
+}
+
 let alcTemplate = {
     "123" : {
         title: "Bob's burgers",
@@ -107,7 +132,9 @@ let defaultState = {
         gardensList: [],
         allIDs: []
     },
-    collapsedMenu: false
+    collapsedMenu: false,
+    directoryMenu: false,
+    currentView: "Main App"
 }
 
 const universalDataTracker = (state = defaultState, action) => {
@@ -118,8 +145,12 @@ const universalDataTracker = (state = defaultState, action) => {
             return deselectCardHelper(state);
         case "TOGGLE_MENU":
             return collapseMenuHelper(state);
+        case "TOGGLE_DIRECTORY":
+            return directoryMenuHelper(state);
         case "ADD_CARD":
             return addCardHelper(state, action.cardID, action.data);
+        case "VIEW_SWITCH":
+            return switchViewHelper(state, action.newView);
         default: 
             return state;
     }

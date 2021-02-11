@@ -50,11 +50,79 @@ export const CollapseMenuButton = styled.div`
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.25);
     transition: background-color 0.2s;
     cursor: pointer;
+    z-index: 10;
     user-select: none;
 
     :hover {
         background-color: #F6F1EB;
     }
+
+    @media screen and (max-width: 410px) {
+        top: auto;
+        bottom: 10px;
+        right: 10px;
+        background-color: #029696;
+        color: white;
+
+        :hover {
+            background-color: #00b1b1;
+        }
+
+        ${({ collapsed }) => collapsed && `
+            bottom: -60px;
+            right: 0px;
+            color: black;
+            background-color:  #FBF6F0;
+
+            :hover {
+                background-color: #F6F1EB;
+            }
+        `}
+    }   
+`
+export const ExpandableMenuButton = styled.div`
+    min-height: 50px;
+    min-width: 50px;
+    border-radius: 25px;
+    background-color: #FBF6F0;
+    position: absolute;
+    right: -70px;
+    top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.25);
+    transition: background-color 0.2s;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+
+    :hover {
+        background-color: #F6F1EB;
+    }
+
+    @media screen and (max-width: 410px) {
+        top: auto;
+        bottom: 10px;
+        right: 70px;
+        background-color: #029696;
+        color: white;
+
+        :hover {
+            background-color: #00b1b1;
+        }
+
+        ${({ collapsed }) => collapsed && `
+            bottom: -60px;
+            right: 60px;
+            color: black;
+            background-color:  #FBF6F0;
+
+            :hover {
+                background-color: #F6F1EB;
+            }
+        `}
+    }   
 `
 
 export const SearchBarContainer = styled.div`
@@ -165,4 +233,9 @@ export const ResultsContainer = styled.div`
         position: relative;
         left: 5px;
     }
+`
+
+export const QuestionMark = styled.p`
+    margin: 0;
+    font-size: 14px;
 `

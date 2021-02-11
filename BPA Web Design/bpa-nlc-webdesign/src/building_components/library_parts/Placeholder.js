@@ -5,7 +5,7 @@ export default function Placeholder() {
     return (
         <PlaceHolderDiv>
             <PlaceHolderImage alt="" src="https://gifted-mclean-c050f4.netlify.app/images/undraw_adventure_4hum.svg"></PlaceHolderImage>
-            <PlaceHolderTitle>Use the search bar to get started!</PlaceHolderTitle>
+            <PlaceHolderTitle>Welcome to the BPA NLC planner! Use the search bar to find attractions, hotels, and other amenities in DC.</PlaceHolderTitle>
         </PlaceHolderDiv>
     )
 }

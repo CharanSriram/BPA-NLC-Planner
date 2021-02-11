@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Chip from '@material-ui/core/Chip'
 import Card from '../building_components/Card'
-import { store, deselectCard, toggleMenu } from '../redux_guts/redux' 
-import { CollapseMenuButton, LibraryBody, SearchBarContainer, SearchBar, ChipContainer, ResultsQuery, ResultsContainer } from '../building_components/library_parts/libraryparts'
+import { store, deselectCard, toggleMenu, toggleDirectoryMenu } from '../redux_guts/redux' 
+import { CollapseMenuButton, LibraryBody, SearchBarContainer, SearchBar, ChipContainer, ResultsQuery, ResultsContainer, ExpandableMenuButton, QuestionMark } from '../building_components/library_parts/libraryparts'
 import DirectionsBlock from '../building_components/library_parts/DirectionsBlock'
 import RatingsBlock from '../building_components/library_parts/RatingsBlock'
 import Tooltip from '@material-ui/core/Tooltip';
@@ -225,6 +225,10 @@ export default class Library extends Component {
         store.dispatch(toggleMenu())
     }
 
+    directoryMenuOnClick = () => {
+        store.dispatch(toggleDirectoryMenu())
+    }
+
     toggleDescription = () => {
         this.setState({showDescription: !this.state.showDescription})
     }
@@ -257,7 +261,10 @@ export default class Library extends Component {
                         }
                     </ResultsContainer>
                     <Tooltip placement="right" title="Click to toggle menu">
-                        <CollapseMenuButton onClick={this.menuToggleOnClick}><QuestionMark style={{fontSize: "18px"}} className="material-icons">{this.state.collapseMenu ? "keyboard_arrow_down" : "keyboard_arrow_up"}</QuestionMark></CollapseMenuButton>
+                        <CollapseMenuButton collapsed={this.state.collapseMenu} onClick={this.menuToggleOnClick}><QuestionMark style={{fontSize: "18px"}} className="material-icons">{this.state.collapseMenu ? "keyboard_arrow_down" : "keyboard_arrow_up"}</QuestionMark></CollapseMenuButton>
+                    </Tooltip>
+                    <Tooltip placement="right" title="Click to open directory">
+                        <ExpandableMenuButton collapsed={this.state.collapseMenu} onClick={this.directoryMenuOnClick}><QuestionMark style={{fontSize: "18px"}} className="material-icons">menu</QuestionMark></ExpandableMenuButton>
                     </Tooltip>
                 </LibraryBody>
             ) 
@@ -288,6 +295,9 @@ export default class Library extends Component {
                 </Tooltip>
                 <Tooltip placement="right" title="Click to toggle menu">
                     <CollapseMenuButton onClick={this.menuToggleOnClick}><QuestionMark style={{fontSize: "18px"}} className="material-icons">{this.state.collapseMenu ? "keyboard_arrow_down" : "keyboard_arrow_up"}</QuestionMark></CollapseMenuButton>
+                </Tooltip>
+                <Tooltip placement="right" title="Click to open directory">
+                    <ExpandableMenuButton collapsed={this.state.collapseMenu} onClick={this.directoryMenuOnClick}><QuestionMark style={{fontSize: "18px"}} className="material-icons">menu</QuestionMark></ExpandableMenuButton>
                 </Tooltip>
                 {this.state.collapseMenu ? <ItemTitle>{selectedInfo.title.length >= 24 ? selectedInfo.title.substring(0, 24) + "..." : selectedInfo.title}</ItemTitle> : <ItemTitle>{selectedInfo.title}</ItemTitle>}
                 <CollapsableArea>
@@ -452,8 +462,5 @@ const InfoTag = styled.div`
     justify-content: center;
 `
 
-const QuestionMark = styled.p`
-    margin: 0;
-    font-size: 14px;
-`
+
 
