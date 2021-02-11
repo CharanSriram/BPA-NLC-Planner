@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import {QuestionMark} from './library_parts/libraryparts'
-import Tooltip from '@material-ui/core/Tooltip';
 import { store, switchView } from '../redux_guts/redux' 
 
 
@@ -65,7 +64,6 @@ export default class About extends Component {
                     <LinkItem ham={this.state.menuOpen} onClick={() => this.handleLinkClick(0)}><LinkInner ham={this.state.menuOpen}>Main App</LinkInner></LinkItem>
                     <LinkItem ham={this.state.menuOpen} onClick={() => this.handleLinkClick(1)}><LinkInner ham={this.state.menuOpen} selected={true}>About</LinkInner></LinkItem>
                     <LinkItem ham={this.state.menuOpen} onClick={() => this.handleLinkClick(2)}><LinkInner ham={this.state.menuOpen}>Contact</LinkInner></LinkItem>
-                    <LinkItem ham={this.state.menuOpen} onClick={() => this.handleLinkClick(3)}><LinkInner ham={this.state.menuOpen}>Resources</LinkInner></LinkItem>                
                 </AboutDirectory>
                 <CloseButton onClick={this.toggleHamBurger}><QuestionMark className="material-icons">menu</QuestionMark></CloseButton>
                 <AboutPageImage src="https://gifted-mclean-c050f4.netlify.app/images/undraw_about_me_wa29.svg" loading="lazy"></AboutPageImage>
@@ -76,7 +74,7 @@ export default class About extends Component {
                     <AboutP>Once you select an attraction, the map will reposition itself at the location. From there, you can get your current address and get directions directly to the attraction via Google Maps.</AboutP>
                     <AboutP>If you have a mobile device with the Google Maps app, try visiting the website from there; our site will switch to the app on your phone with the directions prefilled.</AboutP>
                     <AboutHeader>Behind the Scenes</AboutHeader>
-                    <AboutA></AboutA>
+                    <AboutA href="https://github.com/CharanSriram/BPA-NLC-Planner">Visit the Github</AboutA>
                 </AboutSection>
             </AboutBody>
         )
@@ -124,6 +122,8 @@ const AboutA = styled.a`
     color: rgba(0, 0, 0, 0.75);
     text-align: left;
     margin-bottom: 15px;
+    width: 100%;
+    text-align: left;
 `
 
 export const CloseButton = styled.div`

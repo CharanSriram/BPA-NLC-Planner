@@ -70,7 +70,6 @@ export default class Directory extends Component {
                     <LinkItem onClick={() => this.handleLinkClick(0)}><LinkInner selected={this.state.currentView === "Main App"}>Main App</LinkInner></LinkItem>
                     <LinkItem onClick={() => this.handleLinkClick(1)}><LinkInner selected={this.state.currentView === "About"}>About</LinkInner></LinkItem>
                     <LinkItem onClick={() => this.handleLinkClick(2)}><LinkInner selected={this.state.currentView === "Contact"}>Contact</LinkInner></LinkItem>
-                    <LinkItem onClick={() => this.handleLinkClick(3)}><LinkInner selected={this.state.currentView === "Resources"}>Resources</LinkInner></LinkItem>
                 </LinkSection>
             </DirectoryBody>
         )
