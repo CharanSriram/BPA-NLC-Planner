@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import {QuestionMark} from './library_parts/libraryparts'
 import { store, switchView } from '../redux_guts/redux' 
 
-
-export default class About extends Component {
+export default class Contact extends Component {
     constructor(props) {
         super(props)
     
@@ -22,13 +21,13 @@ export default class About extends Component {
                 if (this.state.menuOpen) this.setState({menuOpen: false})
             }
         });
+        (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })()
     }
 
     storeDidChange = () => {
-        this.setState({open: store.getState().currentView === "About"})
+        this.setState({open: store.getState().currentView === "Contact"})
     }
 
-    
     handleLinkClick = (type) => {
         switch (type) {
             case 0:
@@ -57,78 +56,30 @@ export default class About extends Component {
             this.setState({menuOpen: !this.state.menuOpen})
     }
 
+
     render() {
         return (
             <AboutBody onClick={this.handleCloseHam} open={this.state.open}>
-                <AboutDirectory ham={this.state.menuOpen}>
-                    <LinkItem ham={this.state.menuOpen} onClick={() => this.handleLinkClick(0)}><LinkInner ham={this.state.menuOpen}>Main App</LinkInner></LinkItem>
-                    <LinkItem ham={this.state.menuOpen} onClick={() => this.handleLinkClick(1)}><LinkInner ham={this.state.menuOpen} selected={true}>About</LinkInner></LinkItem>
-                    <LinkItem ham={this.state.menuOpen} onClick={() => this.handleLinkClick(2)}><LinkInner ham={this.state.menuOpen}>Contact</LinkInner></LinkItem>
-                </AboutDirectory>
-                <CloseButton onClick={this.toggleHamBurger}><QuestionMark className="material-icons">menu</QuestionMark></CloseButton>
-                <AboutPageImage src="https://gifted-mclean-c050f4.netlify.app/images/undraw_about_me_wa29.svg" loading="lazy"></AboutPageImage>
-                <AboutSection>
-                    <AboutHeader>General</AboutHeader>
-                    <AboutP>NLC Hub is a web application created using React that makes planning your trip to DC productive, interactive, and fun.</AboutP>
-                    <AboutP>The map you see on the Main App page is completely interactive! Enter keywords like "hotel" or "restaurant" to get a list of attractions and their corresponding details.</AboutP>
-                    <AboutP>Once you select an attraction, the map will reposition itself at the location. From there, you can get your current address and get directions directly to the attraction via Google Maps.</AboutP>
-                    <AboutP>If you have a mobile device with the Google Maps app, try visiting the website from there; our site will switch to the app on your phone with the directions prefilled.</AboutP>
-                    <AboutHeader>Behind the Scenes</AboutHeader>
-                    <AboutA href="https://github.com/CharanSriram/BPA-NLC-Planner">Visit the Github</AboutA>
-                </AboutSection>
-            </AboutBody>
+            <AboutDirectory ham={this.state.menuOpen}>
+                <LinkItem ham={this.state.menuOpen} onClick={() => this.handleLinkClick(0)}><LinkInner ham={this.state.menuOpen}>Main App</LinkInner></LinkItem>
+                <LinkItem ham={this.state.menuOpen} onClick={() => this.handleLinkClick(1)}><LinkInner ham={this.state.menuOpen}>About</LinkInner></LinkItem>
+                <LinkItem ham={this.state.menuOpen} onClick={() => this.handleLinkClick(2)}><LinkInner ham={this.state.menuOpen} selected={true}>Contact</LinkInner></LinkItem>
+            </AboutDirectory>
+            <CloseButton onClick={this.toggleHamBurger}><QuestionMark className="material-icons">menu</QuestionMark></CloseButton>
+            <TypeFormHolder>
+                <div className="typeform-widget" data-url="https://form.typeform.com/to/JamO6KdH?typeform-medium=embed-snippet" style={{width: "100%", height: "100%"}}></div>
+            </TypeFormHolder>
+            
+        </AboutBody>
         )
     }
 }
 
-const AboutPageImage = styled.img`
-    max-width: 500px;
-    margin-bottom: 20px;
-    min-height: 300px;
-    width: 300px;
 
-    @media screen and (max-width: 600px) {
-        max-width: calc(100% - 30px);
-    }
-`
-
-const AboutSection = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;    
-    max-width: 500px;
-    overflow: auto;
-`
-
-const AboutHeader = styled.h3`
-    margin: 0;
-    color: black;
-    width: 100%;
-    text-align: left;
-    font-family: 'Lato';
-    margin-bottom: 10px;
-    margin-top: 5px;
-`
-
-const AboutP = styled.p`
-    margin: 0;
-    font-family: 'Lato';
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.75);
-    text-align: left;
-    margin-bottom: 15px;
-`
-
-const AboutA = styled.a`
-    margin: 0;
-    font-family: 'Lato';
-    font-size: 14px;
-    color: rgba(0, 0, 0, 0.75);
-    text-align: left;
-    margin-bottom: 15px;
-    width: 100%;
-    text-align: left;
+const TypeFormHolder = styled.div`
+    height: 85%;
+    width: calc(100% - 100px);
+    border-radius: 5px;
 `
 
 export const CloseButton = styled.div`
@@ -178,6 +129,7 @@ const AboutBody = styled.div`
     ${({open}) => open && `
         height: 100%;
         min-height: 100%;
+        overflow: none;
         pointer-events: auto;
         opacity: 1;
     `}

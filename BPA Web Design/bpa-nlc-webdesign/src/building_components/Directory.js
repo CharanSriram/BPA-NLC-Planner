@@ -119,6 +119,7 @@ const LinkInner = styled.a`
     font-size: 14px;
     color: black;
     text-decoration: none;
+    font-family: 'Lato'
 
     @media screen and (max-width: 600px) {
         font-size: 20px;;

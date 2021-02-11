@@ -3,6 +3,7 @@ import React from 'react'
 import Library from './building_components/Library'
 import GMaps from './building_components/GMaps'
 import Directory from  './building_components/Directory'
+import Contact from './building_components/Contact'
 import About from './building_components/About'
 import {store, addCard, switchView} from './redux_guts/redux'
 import { db } from './db_guts/db'
@@ -92,6 +93,7 @@ class App extends React.Component {
         <Library />
         <Directory />
         <About />
+        <Contact />
       </div>
     );
   }
